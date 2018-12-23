@@ -1,0 +1,7 @@
+<% unless current_user == user %>
+  <% if current_user.liking?(micropost) %>
+    <%= link_to("unlike", Favorite.find_by(user_id: current_user.id, micropost: micropost.id), method: :delete) %>
+  <% else %>
+    <%= link_to("like",favorites_path(favorite: {micropost_id: micropost.id}),method: :post) %>
+  <% end %>
+<% end %>
